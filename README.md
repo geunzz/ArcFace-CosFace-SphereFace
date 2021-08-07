@@ -8,7 +8,7 @@ Arcface is a method of embedding feature vectors of images based on angles. Ther
     BATCH_SIZE = 16
     datagen = data_generator(DATASET_PATH = 'PATH/TO/THE/TRAIN_IMAGE/', shuffle_sel=True)
 
-train.py trains the network containing the arcface algorithm, and creates a pytorch(.pt) file as the result. And you can also check the performance in test.py using this pt file. Simply input the data path to each py file and you can run it without any problem.
+train.py trains the network containing the arcface algorithm, and creates a pytorch(.pt) file as the result.
 
     python train.py    
     
