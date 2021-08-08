@@ -12,11 +12,12 @@ train.py trains the network containing the arcface algorithm, and creates a pyto
 
     python train.py    
     
-Similarly, in the test.py file, several hyperparameters must be specified in advance. The number of classes, batch size, and threshold value should be specified during training. The threshold value becomes the decision threshold to be considered correct when the model's confidence is greater than or equal to this value. If you do not want to use this value, simply specify 0 to disable the function.
+Similarly, in the test.py file, several hyperparameters must be specified in advance. The number of classes, batch size, threshold value and scaling factor should be specified. The threshold value becomes the decision threshold to be considered correct when the model's confidence is greater than or equal to this value. If you do not want to use this value, simply specify 0 to disable the function. And you can adjust the extremes of the softmax output by using a scaling factor. By dividing the input value of softmax by the corresponding factor, it is possible to obtain the effect of mitigating the output value so that it does not come out to an extreme value close to 0 or 1. It is possible to adjust the confidence, which is the output of softmax, to a reliable level through an appropriate factor for the model.
 
     BATCH_SIZE = 5
     THRESHOLD = 0.9
     CLASS_NUM = 12
+    SCALING_FACTOR = 5 #for temperature scaling
     datagen = data_generator(DATASET_PATH = 'PATH/TO/THE/TEST_IMAGE/', shuffle_sel=True)
 
 After specifying the value, you can evaluate the performance of the trained model by executing the test.py file.
