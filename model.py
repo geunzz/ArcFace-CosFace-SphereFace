@@ -12,10 +12,10 @@ class ArcFace(nn.Module):
         self.class_num = class_num
         
         self.conv1 = nn.Conv2d(3, 64, 3, padding=0)
-        self.conv2 = nn.Conv2d(64, 128, 3, padding=0)
+        self.conv2 = nn.Conv2d(64, 64, 3, padding=0)
         self.pool = nn.MaxPool2d(2, 2)
-        self.dense = nn.Linear(29952, 128)
-        self.weight = Parameter(torch.FloatTensor(class_num, 128))
+        self.dense = nn.Linear(14976, 64)
+        self.weight = Parameter(torch.FloatTensor(class_num, 64))
 
         nn.init.xavier_uniform_(self.weight)
         
