@@ -5,7 +5,7 @@ from torch.nn import Parameter
 import math
 
 class ArcFace(nn.Module):
-    def __init__(self, s=120.0, margin=0.5, class_num=20):
+    def __init__(self, s=128.0, margin=0.5, class_num=20):
         super(ArcFace, self).__init__()
         self.s = s
         self.m = margin
