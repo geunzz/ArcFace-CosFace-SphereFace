@@ -5,13 +5,14 @@ from model import ArcFace
 from sklearn.manifold import TSNE
 from matplotlib import pyplot as plt
 
-datagen = data_generator(DATASET_PATH = 'C:/projects/dataset/thermal_image/80_60_test_dataset/', shuffle_sel=True)
+datagen = data_generator(DATASET_PATH = 'PATH/TO/THE/TEST_IMAGE/', shuffle_sel=True)
 data_class_set, data_array, label, data_name = datagen.data_label_set_gen()
 arcface = torch.load('arcface_model_6.pt')
 
 BATCH_SIZE = 5
-THRESHOLD = 0.999
+THRESHOLD = 0.9
 CLASS_NUM = 12
+SCALING_FACTOR = 5 #for temperature scaling
 
 positive = 0
 total = 0
@@ -26,7 +27,7 @@ for step in range(int(len(data_array)/BATCH_SIZE)):
         sample = np.transpose(sample)
         batch_image.append(sample)
         batch_label.append(label[index])
-    prob_feature = arcface.test(torch.tensor(batch_image))
+    prob_feature = arcface.test(torch.tensor(batch_image))/SCALING_FACTOR
     prob_predict = torch.softmax(prob_feature, dim=1)
     predict = torch.argmax(prob_predict, dim=1).tolist()
 
