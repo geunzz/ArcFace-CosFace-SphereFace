@@ -1,6 +1,6 @@
 # ArcFace
 ![arcface](https://user-images.githubusercontent.com/84235639/128590143-a6b9de0a-e123-409b-855c-a9ce73f28ffa.JPG)    
-    
+![arcface_eq](https://user-images.githubusercontent.com/84235639/130340815-74fedbf4-7d17-4000-851b-ad58a8ce0e3e.JPG)    
 Arcface is a method of embedding feature vectors of images based on angles. Therefore, embeddings are distributed at specific angles for each class, and it is said that there is an advantage of embedding more precisely than the existing various metric learning methods. Before training, hyperparameters defined in uppercase letters in the train.py file must be specified in advance. The number of classes, batch size, and number of epochs must be entered, and the path of the data to be learned must also be entered.
 
     CLASS_NUM = 12
@@ -24,3 +24,10 @@ After specifying the value, you can evaluate the performance of the trained mode
 
     python test.py
 
+# CosFace & SphereFace
+![cosface_eq](https://user-images.githubusercontent.com/84235639/130340817-ea97e49e-5923-4c66-8b59-c4394f38fb56.JPG)
+![sphereface_eq](https://user-images.githubusercontent.com/84235639/130340820-65bbd0a5-1bea-482b-851b-ef12a6dcfa68.JPG)  
+
+Both cosface and sphereface are methods of creating an angular-based loss. However, the method of giving margin is different from arcface.
+Cosface is a method of giving a margin to the cos value itself, not the angle, and sphereface is applied by multiplying the angle value rather than adding a margin. Distributed learning is implemented using three types of losses that give margins in different ways, which can be trained by executing the main_combine.py file. 
+Also, you can check the result with test_combine.py, and you can get the result by ensemble each network.
